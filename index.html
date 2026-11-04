@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Severná Ozvena · vikingské tričká a hudba DRAKWAR™</title>
+    <meta name="description" content="Súkromný predaj umeleckého projektu DRAKWAR™: vikingské tričká s runovými motívmi, severské hudobné ságy a filmové príbehy."/>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #f3f4f6; overflow-x: hidden; }
+        h1, h2, h3, h4, .rune-font { font-family: 'Cinzel', serif; }
+        
+        /* Glassmorphism 3D Efekty */
+        .glass-panel { 
+            background: rgba(15, 23, 42, 0.75); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(245, 158, 11, 0.2); 
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+            transform-style: preserve-3d;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.15s ease-out;
+        }
+        
+        .glass-panel-hover:hover { 
+            border-color: rgba(245, 158, 11, 0.6); 
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.25), 0 0 15px rgba(217, 119, 6, 0.2); 
+        }
+
+        .gold-gradient-text { 
+            background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 50%, #b45309 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .viking-btn { 
+            background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #78350f 100%); 
+            transition: all 0.3s ease; 
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.3); 
+        }
+        
+        .viking-btn:hover { 
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%); 
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); 
+            transform: scale(1.03); 
+        }
+
+        /* 3D Rúnické Pozadie */
+        #runeCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 antialiased selection:bg-amber-600 selection:text-white relative">
+
+    <!-- 3D Časticové Pozadie (Vznášajúce sa Runy a Dym) -->
+    <canvas id="runeCanvas"></canvas>
+
+    <!-- Navigácia -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-6 py-4 flex items-center justify-between">
+        <a href="#domov" class="flex items-center gap-3 text-amber-500 font-bold tracking-widest text-lg">
+            <span class="text-2xl font-serif">ᛟ</span>
+            <span class="rune-font tracking-wider text-slate-100">SEVERNÁ OZVENA</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider text-slate-300">
+            <a href="#tricka" class="hover:text-amber-400 transition">Tričká</a>
+            <a href="#hudba" class="hover:text-amber-400 transition">Hudba</a>
+            <a href="#kovacna" class="hover:text-amber-400 transition">V kováčni</a>
+        </nav>
+        <button onclick="openModal('Všeobecný záujem')" class="viking-btn px-5 py-2.5 rounded-lg text-white font-bold uppercase tracking-wider text-xs flex items-center gap-2">
+            <span>KONTAKT</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="domov" class="relative pt-32 pb-20 px-6 min-h-screen flex items-center justify-center overflow-hidden z-10">
+        <div class="absolute inset-0 z-0">
+            <img src="https://assets.macaly-user-data.dev/d3r189217dwdjaf3ngrd2zk2/tsz7ylo81k9h1oenve2p28ak/mjO4UhNdSOcYtxkOAGwcL/generated-LJwmxPg6.png" class="w-full h-full object-cover opacity-25" alt="Fjord">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl text-center">
+            <p class="text-amber-500 tracking-[0.3em] text-xs font-bold uppercase mb-4">ODEJ SA. POČÚVAJ. PAMÄTAJ.</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold uppercase tracking-wider mb-6 leading-tight">
+                SEVERNÁ <br/><span class="gold-gradient-text italic">OZVENA</span>
+            </h1>
+            <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                AI tvorca hudby a filmových príbehov. Zakladateľ umeleckého projektu <strong class="text-amber-400 font-semibold">DRAKWAR™</strong>.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#tricka" class="viking-btn px-8 py-4 rounded-xl text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2">
+                    <span>VSTÚPIŤ DO SÁGY</span>
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </a>
+                <a href="#hudba" class="glass-panel px-8 py-4 rounded-xl text-slate-200 hover:text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2 transition">
+                    <span>VYPOČUŤ HUDBU</span>
+                    <i data-lucide="disc" class="w-5 h-5 text-amber-500"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tričká -->
+    <section id="tricka" class="py-20 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="mb-12 text-center md:text-left">
+            <p class="text-amber-500 font-bold tracking-widest text-xs uppercase mb-2">ODEV PRE VÝPRAVU</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide uppercase">TRIČKÁ DRAKWAR™</h2>
+            <p class="text-slate-400 mt-2">Malé série, výrazné motívy. Každý kus nesie stopu severu.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Tričko 1 -->
+            <div class="glass-panel glass-panel-hover rounded-2xl p-4 tilt-card transition-all flex flex-col justify-between">
+                <img src="https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/j7nqz04j4w24dgzztnbesge8/tsz7ylo81k9h1oenve2p28ak/pnOTMwxoja4F5TvnsOaFL.png" class="w-full h-72 object-cover rounded-xl mb-4 pointer-events-none" alt="LEAD OR BE FORGOTTEN">
+                <div>
+                    <h3 class="font-bold text-lg text-slate-100">LEAD OR BE FORGOTTEN</h3>
+                    <p class="text-slate-400 text-xs mb-4">čierne tričko · DRAKWAR™ · motív č. 1</p>
+                    <button onclick="openModal('Tričko: LEAD OR BE FORGOTTEN (Motív č. 1)')" class="w-full viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tričko 2 -->
+            <div class="glass-panel glass-panel-hover rounded-2xl p-4 tilt-card transition-all flex flex-col justify-between">
+                <img src="https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/j7nqz04j4w24dgzztnbesge8/tsz7ylo81k9h1oenve2p28ak/koTT0sZhBptWellQgBnXa.png" class="w-full h-72 object-cover rounded-xl mb-4 pointer-events-none" alt="UNLEASH YOUR SPIRIT">
+                <div>
+                    <h3 class="font-bold text-lg text-slate-100">UNLEASH YOUR SPIRIT</h3>
+                    <p class="text-slate-400 text-xs mb-4">čierne tričko · DRAKWAR™ · motív č. 2</p>
+                    <button onclick="openModal('Tričko: UNLEASH YOUR SPIRIT (Motív č. 2)')" class="w-full viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tričko 3 -->
+            <div class="glass-panel glass-panel-hover rounded-2xl p-4 tilt-card transition-all flex flex-col justify-between">
+                <img src="https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/j7nqz04j4w24dgzztnbesge8/tsz7ylo81k9h1oenve2p28ak/kyblZU5Px-KAL-RlAn9DN.png" class="w-full h-72 object-cover rounded-xl mb-4 pointer-events-none" alt="ODIN">
+                <div>
+                    <h3 class="font-bold text-lg text-slate-100">ODIN</h3>
+                    <p class="text-slate-400 text-xs mb-4">čierne tričko · DRAKWAR™ · motív č. 3</p>
+                    <button onclick="openModal('Tričko: ODIN (Motív č. 3)')" class="w-full viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tričko 4 -->
+            <div class="glass-panel glass-panel-hover rounded-2xl p-4 tilt-card transition-all flex flex-col justify-between">
+                <img src="https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/j7nqz04j4w24dgzztnbesge8/tsz7ylo81k9h1oenve2p28ak/8gP51be-duf7_ZrwQzMUP.png" class="w-full h-72 object-cover rounded-xl mb-4 pointer-events-none" alt="VALKNUT">
+                <div>
+                    <h3 class="font-bold text-lg text-slate-100">VALKNUT</h3>
+                    <p class="text-slate-400 text-xs mb-4">čierne tričko · DRAKWAR™ · motív č. 4</p>
+                    <button onclick="openModal('Tričko: VALKNUT (Motív č. 4)')" class="w-full viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tričko 5 -->
+            <div class="glass-panel glass-panel-hover rounded-2xl p-4 tilt-card transition-all flex flex-col justify-between">
+                <img src="https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/j7nqz04j4w24dgzztnbesge8/tsz7ylo81k9h1oenve2p28ak/5mhkDjNTy4_TJf3KHQw35.png" class="w-full h-72 object-cover rounded-xl mb-4 pointer-events-none" alt="VLCI VIKINGOV">
+                <div>
+                    <h3 class="font-bold text-lg text-slate-100">VLCI VIKINGOV</h3>
+                    <p class="text-slate-400 text-xs mb-4">čierne tričko · DRAKWAR™ · motív č. 5</p>
+                    <button onclick="openModal('Tričko: VLCI VIKINGOV (Motív č. 5)')" class="w-full viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tričko 6 -->
+            <div class="glass-panel glass-panel-hover rounded-2xl p-4 tilt-card transition-all flex flex-col justify-between">
+                <img src="https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/j7nqz04j4w24dgzztnbesge8/tsz7ylo81k9h1oenve2p28ak/Z-gGcl45Y6YENIhIJANv9.png" class="w-full h-72 object-cover rounded-xl mb-4 pointer-events-none" alt="VIKING">
+                <div>
+                    <h3 class="font-bold text-lg text-slate-100">VIKING</h3>
+                    <p class="text-slate-400 text-xs mb-4">čierne tričko · DRAKWAR™ · motív č. 6</p>
+                    <button onclick="openModal('Tričko: VIKING (Motív č. 6)')" class="w-full viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tričko 7 -->
+            <div class="glass-panel glass-panel-hover rounded-2xl p-4 tilt-card transition-all flex flex-col justify-between">
+                <img src="https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/j7nqz04j4w24dgzztnbesge8/tsz7ylo81k9h1oenve2p28ak/ac7VsTCBYKsjIbDk46BR7.png" class="w-full h-72 object-cover rounded-xl mb-4 pointer-events-none" alt="BERSERKER">
+                <div>
+                    <h3 class="font-bold text-lg text-slate-100">BERSERKER</h3>
+                    <p class="text-slate-400 text-xs mb-4">čierne tričko · DRAKWAR™ · motív č. 7</p>
+                    <button onclick="openModal('Tričko: BERSERKER (Motív č. 7)')" class="w-full viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hudobná sekcia (Grafické karty s náhľadmi a priamym prehraním) -->
+    <section id="hudba" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800/60 relative z-10">
+        <div class="mb-12 text-center md:text-left">
+            <p class="text-amber-500 font-bold tracking-widest text-xs uppercase mb-2">ZVUK PRE DLHÉ CESTY</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide uppercase">HUDBA & SÁGY</h2>
+            <p class="text-slate-400 mt-2">Rytmy, ktoré voňajú dažďom, dymom a mokrým drevom.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Skladba 1: Beyond the Stone Shore -->
+            <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden p-4 tilt-card transition-all">
+                <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/watch?v=eEREHusRbCA', '_blank')">
+                    <img src="https://img.youtube.com/vi/eEREHusRbCA/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Beyond the Stone Shore">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
+                        </div>
+                    </div>
+                    <span class="absolute bottom-3 right-3 bg-black/80 text-amber-400 text-xs px-2 py-1 rounded font-mono font-bold">YouTube</span>
+                </div>
+                <h3 class="font-bold text-xl text-slate-100">Beyond the Stone Shore</h3>
+                <p class="text-slate-400 text-xs mb-4">Nová epická severská skladba</p>
+                <div class="flex gap-2">
+                    <a href="https://www.youtube.com/watch?v=eEREHusRbCA" target="_blank" class="flex-1 glass-panel py-3 rounded-lg text-amber-400 hover:text-amber-300 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition">
+                        <i data-lucide="youtube" class="w-4 h-4"></i>
+                        <span>PREHRAŤ</span>
+                    </a>
+                    <button onclick="openModal('Skladba: Beyond the Stone Shore')" class="flex-1 viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Skladba 2: Valhöll Kallar -->
+            <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden p-4 tilt-card transition-all">
+                <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/shorts/QF2eL_sSfV4', '_blank')">
+                    <img src="https://img.youtube.com/vi/QF2eL_sSfV4/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Valhöll Kallar">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
+                        </div>
+                    </div>
+                    <span class="absolute bottom-3 right-3 bg-black/80 text-amber-400 text-xs px-2 py-1 rounded font-mono font-bold">Shorts</span>
+                </div>
+                <h3 class="font-bold text-xl text-slate-100">Valhöll Kallar</h3>
+                <p class="text-slate-400 text-xs mb-4">Bojové rytmy a volanie Valhally</p>
+                <div class="flex gap-2">
+                    <a href="https://www.youtube.com/shorts/QF2eL_sSfV4" target="_blank" class="flex-1 glass-panel py-3 rounded-lg text-amber-400 hover:text-amber-300 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition">
+                        <i data-lucide="youtube" class="w-4 h-4"></i>
+                        <span>PREHRAŤ</span>
+                    </a>
+                    <button onclick="openModal('Skladba: Valhöll Kallar')" class="flex-1 viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Skladba 3: Sinir Hafs og Storms -->
+            <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden p-4 tilt-card transition-all">
+                <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/shorts/dOpLvcIVGhY', '_blank')">
+                    <img src="https://img.youtube.com/vi/dOpLvcIVGhY/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Sinir Hafs og Storms">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
+                        </div>
+                    </div>
+                    <span class="absolute bottom-3 right-3 bg-black/80 text-amber-400 text-xs px-2 py-1 rounded font-mono font-bold">Shorts</span>
+                </div>
+                <h3 class="font-bold text-xl text-slate-100">Sinir Hafs og Storms</h3>
+                <p class="text-slate-400 text-xs mb-4">Príbeh búrky a zamrznutého mora</p>
+                <div class="flex gap-2">
+                    <a href="https://www.youtube.com/shorts/dOpLvcIVGhY" target="_blank" class="flex-1 glass-panel py-3 rounded-lg text-amber-400 hover:text-amber-300 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition">
+                        <i data-lucide="youtube" class="w-4 h-4"></i>
+                        <span>PREHRAŤ</span>
+                    </a>
+                    <button onclick="openModal('Skladba: Sinir Hafs og Storms')" class="flex-1 viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Skladba 4: Óðinn Horfir Yfir Oss -->
+            <div class="glass-panel glass-panel-hover rounded-2xl overflow-hidden p-4 tilt-card transition-all">
+                <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/shorts/coCdpz3qj3o', '_blank')">
+                    <img src="https://img.youtube.com/vi/coCdpz3qj3o/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Óðinn Horfir Yfir Oss">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
+                        </div>
+                    </div>
+                    <span class="absolute bottom-3 right-3 bg-black/80 text-amber-400 text-xs px-2 py-1 rounded font-mono font-bold">Shorts</span>
+                </div>
+                <h3 class="font-bold text-xl text-slate-100">Óðinn Horfir Yfir Oss</h3>
+                <p class="text-slate-400 text-xs mb-4">Mystická skladba pod dohľadom Všeotca</p>
+                <div class="flex gap-2">
+                    <a href="https://www.youtube.com/shorts/coCdpz3qj3o" target="_blank" class="flex-1 glass-panel py-3 rounded-lg text-amber-400 hover:text-amber-300 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition">
+                        <i data-lucide="youtube" class="w-4 h-4"></i>
+                        <span>PREHRAŤ</span>
+                    </a>
+                    <button onclick="openModal('Skladba: Óðinn Horfir Yfir Oss')" class="flex-1 viking-btn py-3 rounded-lg text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2">
+                        <span>MÁM ZÁUJEM</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcia V kováčni -->
+    <section id="kovacna" class="py-20 px-6 max-w-4xl mx-auto text-center border-t border-slate-800/60 relative z-10">
+        <p class="text-amber-500 font-bold tracking-widest text-xs uppercase mb-2">PRIPRAVUJE SA</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide uppercase mb-4">V KOVÁČNI DRAKWAR™</h2>
+        <p class="text-slate-300 mb-8 leading-relaxed">
+            Každý týždeň vznikajú nové príbehy, rytmy a grafické motívy inšpirované severskou mytológiou. Sleduj tvorbu a buď pri tom, keď sa kje nová oceľ.
+        </p>
+        <a href="https://www.youtube.com/@Vladim%C3%ADr-AItransformacie" target="_blank" class="inline-flex items-center gap-3 viking-btn px-8 py-4 rounded-xl text-white font-bold uppercase tracking-wider text-sm">
+            <i data-lucide="youtube" class="w-5 h-5"></i>
+            <span>NAVŠTÍVIŤ YOUTUBE KANÁL</span>
+        </a>
+    </section>
+
+    <!-- Pätička -->
+    <footer class="py-8 text-center border-t border-slate-900 text-slate-500 text-xs uppercase tracking-widest relative z-10">
+        <p>© 2026 SEVERNÁ OZVENA · DRAKWAR™ · Všetky práva vyhradené</p>
+    </footer>
+
+    <!-- Modal pre Dohodnutie Záujmu -->
+    <div id="inquiryModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel max-w-lg w-full rounded-2xl p-6 relative border border-amber-500/30">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bold text-amber-400 mb-2">MÁM ZÁUJEM</h3>
+            <p class="text-slate-300 text-sm mb-6">Vyber si možnosti a pošli správu priamo autorovi (e-mailom alebo skopírovaním pre Messenger).</p>
+
+            <form id="inquiryForm" class="space-y-4">
+                <input type="hidden" id="selectedItem" name="item" value="">
+                
+                <div>
+                    <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Položka</label>
+                    <input type="text" id="displayItem" readonly class="w-full bg-slate-900/90 border border-slate-700 rounded-lg p-3 text-sm text-slate-200">
+                </div>
+
+                <div id="sizeSelection">
+                    <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Požadovaná veľkosť</label>
+                    <select id="itemSize" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200">
+                        <option value="L (Dostupná ihneď)">Veľkosť L (Ihneď k odberu)</option>
+                        <option value="S (Na objednávku)">Veľkosť S</option>
+                        <option value="M (Na objednávku)">Veľkosť M</option>
+                        <option value="XL (Na objednávku)">Veľkosť XL</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Spôsob doručenia / Odberu</label>
+                    <select id="deliveryOption" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200">
+                        <option value="Packeta">Packeta</option>
+                        <option value="Slovenská pošta">Slovenská pošta</option>
+                        <option value="Osobný odber na Myjave">Osobný odber na Myjave</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-bold text-slate-400 mb-1">Poznámka / Váš kontakt</label>
+                    <textarea id="userNote" rows="3" placeholder="Sem napíš e-mail, telefón alebo otázku..." class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-amber-500"></textarea>
+                </div>
+
+                <div class="flex flex-col gap-3 pt-2">
+                    <button type="button" onclick="sendEmail()" class="viking-btn w-full py-3.5 rounded-xl font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span>ODOSLAŤ E-MAILOM (biznisfin@centrum.sk)</span>
+                    </button>
+                    <button type="button" onclick="copyMessage()" class="glass-panel w-full py-3.5 rounded-xl text-slate-200 hover:text-white font-bold uppercase text-xs tracking-wider flex items-center justify-center gap-2">
+                        <i data-lucide="copy" class="w-4 h-4 text-amber-400"></i>
+                        <span>SKOPÍROVAŤ SPRÁVU PRE MESSENGER</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Skripty (Ikony, Modaly a 3D Efekty) -->
+    <script>
+        lucide.createIcons();
+
+        function openModal(itemName) {
+            document.getElementById('selectedItem').value = itemName;
+            document.getElementById('displayItem').value = itemName;
+            document.getElementById('inquiryModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('inquiryModal').classList.add('hidden');
+        }
+
+        function sendEmail() {
+            const item = document.getElementById('selectedItem').value;
+            const size = document.getElementById('itemSize').value;
+            const delivery = document.getElementById('deliveryOption').value;
+            const note = document.getElementById('userNote').value;
+            
+            const subject = encodeURIComponent("Záujem o DRAKWAR: " + item);
+            const body = encodeURIComponent(`Dobrý deň,\n\nmám záujem o: ${item}\nVeľkosť/Špecifikácia: ${size}\nDoručenie: ${delivery}\nPoznámka: ${note}\n\nS pozdravom`);
+            
+            window.location.href = `mailto:biznisfin@centrum.sk?subject=${subject}&body=${body}`;
+        }
+
+        function copyMessage() {
+            const item = document.getElementById('selectedItem').value;
+            const size = document.getElementById('itemSize').value;
+            const delivery = document.getElementById('deliveryOption').value;
+            const note = document.getElementById('userNote').value;
+
+            const text = `Ahoj, mám záujem o DRAKWAR tvorbu:\nPoložka: ${item}\nVeľkosť: ${size}\nDoručenie: ${delivery}\nPoznámka: ${note}`;
+            navigator.clipboard.writeText(text);
+            alert("Správa bola skopírovaná! Môžeš ju vložiť na Facebooku.");
+        }
+
+        /* 3D Tilt Effect Pre Karty */
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        /* 3D Časticové Pozadie (Dym + Zlaté Severské Runy) */
+        const canvas = document.getElementById('runeCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛋ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛝ','ᛟ','ᛞ'];
+        const particles = Array.from({ length: 35 }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: Math.random() * 18 + 12,
+            rune: runes[Math.floor(Math.random() * runes.length)],
+            speedY: - (Math.random() * 0.4 + 0.1),
+            speedX: (Math.random() - 0.5) * 0.3,
+            opacity: Math.random() * 0.4 + 0.1
+        }));
+
+        function animateRunes() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+                if (p.y < -30) p.y = height + 30;
+                if (p.x < -30) p.x = width + 30;
+                if (p.x > width + 30) p.x = -30;
+
+                ctx.font = `${p.size}px Cinzel, serif`;
+                ctx.fillStyle = `rgba(245, 158, 11, ${p.opacity})`;
+                ctx.fillText(p.rune, p.x, p.y);
+            });
+            requestAnimationFrame(animateRunes);
+        }
+        animateRunes();
+    </script>
+</body>
+</html>
