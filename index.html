@@ -13,44 +13,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f3f4f6; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #010409; color: #f3f4f6; overflow-x: hidden; }
         h1, h2, h3, h4, .rune-font { font-family: 'Cinzel', serif; }
         
-        /* Glassmorphism 3D Efekty */
+        /* Výrazný Glassmorphism s hlbokým nočným efektom */
         .glass-panel { 
-            background: rgba(15, 23, 42, 0.75); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(245, 158, 11, 0.25); 
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.9);
+            background: rgba(8, 15, 30, 0.85); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(245, 158, 11, 0.35); 
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.95), inset 0 1px 1px rgba(255, 255, 255, 0.05);
             transform-style: preserve-3d;
             transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.15s ease-out;
         }
         
         .glass-panel-hover:hover { 
-            border-color: rgba(245, 158, 11, 0.7); 
-            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3), 0 0 20px rgba(217, 119, 6, 0.25); 
+            border-color: rgba(245, 158, 11, 0.85); 
+            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.35), 0 0 25px rgba(217, 119, 6, 0.3); 
         }
 
         .gold-gradient-text { 
-            background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 50%, #b45309 100%); 
+            background: linear-gradient(135deg, #fffbeb 0%, #fbbf24 40%, #d97706 80%, #b45309 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
-            filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.4));
+            filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6));
         }
 
         .viking-btn { 
-            background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #78350f 100%); 
+            background: linear-gradient(135deg, #f59e0b 0%, #b45309 50%, #78350f 100%); 
             transition: all 0.3s ease; 
-            box-shadow: 0 0 15px rgba(217, 119, 6, 0.4); 
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); 
         }
         
         .viking-btn:hover { 
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%); 
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); 
+            background: linear-gradient(135deg, #fbbf24 0%, #d97706 50%, #92400e 100%); 
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.9); 
             transform: scale(1.04); 
         }
 
-        /* 8K Ultra 3D Mýtické Pozadie */
+        /* 8K Intenzívne Nočné Mýtické Pozadie */
         #mythicCanvas {
             position: fixed;
             top: 0;
@@ -64,12 +64,12 @@
 </head>
 <body class="min-h-screen text-slate-100 antialiased selection:bg-amber-600 selection:text-white relative">
 
-    <!-- 8K Mýtické Pozadie (Aurora Borealis, Óðinnove krkavce, Drak, Runy & Iskry) -->
+    <!-- 8K Polárna Žiara a Nočné Pozadie Canvas -->
     <canvas id="mythicCanvas"></canvas>
 
     <!-- Navigácia -->
-    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-amber-500/20 px-6 py-4 flex items-center justify-between">
-        <a href="#domov" class="flex items-center gap-3 text-amber-500 font-bold tracking-widest text-lg">
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/90 backdrop-blur-lg border-b border-amber-500/30 px-6 py-4 flex items-center justify-between shadow-2xl">
+        <a href="#domov" class="flex items-center gap-3 text-amber-400 font-bold tracking-widest text-lg">
             <span class="text-2xl font-serif">ᛟ</span>
             <span class="rune-font tracking-wider text-slate-100">SEVERNÁ OZVENA</span>
         </a>
@@ -87,12 +87,12 @@
     <!-- Hero Section -->
     <section id="domov" class="relative pt-32 pb-20 px-6 min-h-screen flex items-center justify-center overflow-hidden z-10">
         <div class="absolute inset-0 z-0">
-            <img src="https://assets.macaly-user-data.dev/d3r189217dwdjaf3ngrd2zk2/tsz7ylo81k9h1oenve2p28ak/mjO4UhNdSOcYtxkOAGwcL/generated-LJwmxPg6.png" class="w-full h-full object-cover opacity-20" alt="Fjord">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent"></div>
+            <img src="https://assets.macaly-user-data.dev/d3r189217dwdjaf3ngrd2zk2/tsz7ylo81k9h1oenve2p28ak/mjO4UhNdSOcYtxkOAGwcL/generated-LJwmxPg6.png" class="w-full h-full object-cover opacity-15" alt="Fjord">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#010409] via-[#010409]/60 to-transparent"></div>
         </div>
         
         <div class="relative z-10 max-w-4xl text-center">
-            <p class="text-amber-400 tracking-[0.3em] text-xs font-bold uppercase mb-4 drop-shadow">ODEJ SA. POČÚVAJ. PAMÄTAJ.</p>
+            <p class="text-amber-400 tracking-[0.4em] text-xs font-bold uppercase mb-4 drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]">ODEJ SA. POČÚVAJ. PAMÄTAJ.</p>
             <h1 class="text-5xl md:text-7xl font-extrabold uppercase tracking-wider mb-6 leading-tight">
                 SEVERNÁ <br/><span class="gold-gradient-text italic">OZVENA</span>
             </h1>
@@ -106,7 +106,7 @@
                 </a>
                 <a href="#hudba" class="glass-panel px-8 py-4 rounded-xl text-slate-200 hover:text-white font-bold uppercase tracking-wider text-sm flex items-center gap-2 transition">
                     <span>VYPOČUŤ HUDBU</span>
-                    <i data-lucide="disc" class="w-5 h-5 text-amber-500"></i>
+                    <i data-lucide="disc" class="w-5 h-5 text-amber-400"></i>
                 </a>
             </div>
         </div>
@@ -115,7 +115,7 @@
     <!-- Tričká -->
     <section id="tricka" class="py-20 px-6 max-w-7xl mx-auto relative z-10">
         <div class="mb-12 text-center md:text-left">
-            <p class="text-amber-500 font-bold tracking-widest text-xs uppercase mb-2">ODEV PRE VÝPRAVU</p>
+            <p class="text-amber-400 font-bold tracking-widest text-xs uppercase mb-2">ODEV PRE VÝPRAVU</p>
             <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide uppercase">TRIČKÁ DRAKWAR™</h2>
             <p class="text-slate-400 mt-2">Malé série, výrazné motívy. Každý kus nesie stopu severu.</p>
         </div>
@@ -215,9 +215,9 @@
     </section>
 
     <!-- Hudobná sekcia -->
-    <section id="hudba" class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-800/60 relative z-10">
+    <section id="hudba" class="py-20 px-6 max-w-7xl mx-auto border-t border-amber-500/20 relative z-10">
         <div class="mb-12 text-center md:text-left">
-            <p class="text-amber-500 font-bold tracking-widest text-xs uppercase mb-2">ZVUK PRE DLHÉ CESTY</p>
+            <p class="text-amber-400 font-bold tracking-widest text-xs uppercase mb-2">ZVUK PRE DLHÉ CESTY</p>
             <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide uppercase">HUDBA & SÁGY</h2>
             <p class="text-slate-400 mt-2">Rytmy, ktoré voňajú dažďom, dymom a mokrým drevom.</p>
         </div>
@@ -228,7 +228,7 @@
                 <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/watch?v=eEREHusRbCA', '_blank')">
                     <img src="https://img.youtube.com/vi/eEREHusRbCA/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Beyond the Stone Shore">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/50 group-hover:scale-110 transition-transform">
                             <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
                 <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/shorts/QF2eL_sSfV4', '_blank')">
                     <img src="https://img.youtube.com/vi/QF2eL_sSfV4/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Valhöll Kallar">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/50 group-hover:scale-110 transition-transform">
                             <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
                         </div>
                     </div>
@@ -276,7 +276,7 @@
                 <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/shorts/dOpLvcIVGhY', '_blank')">
                     <img src="https://img.youtube.com/vi/dOpLvcIVGhY/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Sinir Hafs og Storms">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/50 group-hover:scale-110 transition-transform">
                             <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
                         </div>
                     </div>
@@ -300,7 +300,7 @@
                 <div class="relative aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900 group cursor-pointer" onclick="window.open('https://www.youtube.com/shorts/coCdpz3qj3o', '_blank')">
                     <img src="https://img.youtube.com/vi/coCdpz3qj3o/hqdefault.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80 group-hover:opacity-100" alt="Óðinn Horfir Yfir Oss">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-center justify-center">
-                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
+                        <div class="w-16 h-16 rounded-full bg-amber-500/90 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/50 group-hover:scale-110 transition-transform">
                             <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
                         </div>
                     </div>
@@ -322,8 +322,8 @@
     </section>
 
     <!-- Sekcia V kováčni -->
-    <section id="kovacna" class="py-20 px-6 max-w-4xl mx-auto text-center border-t border-slate-800/60 relative z-10">
-        <p class="text-amber-500 font-bold tracking-widest text-xs uppercase mb-2">PRIPRAVUJE SA</p>
+    <section id="kovacna" class="py-20 px-6 max-w-4xl mx-auto text-center border-t border-amber-500/20 relative z-10">
+        <p class="text-amber-400 font-bold tracking-widest text-xs uppercase mb-2">PRIPRAVUJE SA</p>
         <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide uppercase mb-4">V KOVÁČNI DRAKWAR™</h2>
         <p class="text-slate-300 mb-8 leading-relaxed">
             Každý týždeň vznikajú nové príbehy, rytmy a grafické motívy inšpirované severskou mytológiou. Sleduj tvorbu a buď pri tom, keď sa kje nová oceľ.
@@ -335,13 +335,13 @@
     </section>
 
     <!-- Pätička -->
-    <footer class="py-8 text-center border-t border-slate-900 text-slate-500 text-xs uppercase tracking-widest relative z-10">
+    <footer class="py-8 text-center border-t border-amber-500/20 text-slate-500 text-xs uppercase tracking-widest relative z-10">
         <p>© 2026 SEVERNÁ OZVENA · DRAKWAR™ · Všetky práva vyhradené</p>
     </footer>
 
     <!-- Modal pre Dohodnutie Záujmu -->
-    <div id="inquiryModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="glass-panel max-w-lg w-full rounded-2xl p-6 relative border border-amber-500/30">
+    <div id="inquiryModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel max-w-lg w-full rounded-2xl p-6 relative border border-amber-500/40 shadow-2xl">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
@@ -394,7 +394,7 @@
         </div>
     </div>
 
-    <!-- Skripty (Ikony, Modaly a 8K Mýtické 3D Pozadie) -->
+    <!-- Skripty (Ikony, Modaly a 8K Polárna Žiara Canvas) -->
     <script>
         lucide.createIcons();
 
@@ -450,7 +450,7 @@
         });
 
         /* ============================================================
-           8K ULTRA 3D MYTHIC CANVAS (Aurora, God/Raven/Dragon Silhouettes, Runes & Ember)
+           8K ULTRA AURORA BOREALIS & MYTHIC NIGHT CANVAS
            ============================================================ */
         const canvas = document.getElementById('mythicCanvas');
         const ctx = canvas.getContext('2d');
@@ -458,7 +458,7 @@
         let width = 0, height = 0, dpr = 1;
 
         function resizeCanvas() {
-            dpr = Math.min(window.devicePixelRatio || 1, 2); // 8K/4K scaling
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
             width = window.innerWidth;
             height = window.innerHeight;
             canvas.width = width * dpr;
@@ -468,194 +468,180 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // 1. Polárna Žiara (Aurora Borealis) - Vlny Mýtickej Oblohy
         let time = 0;
-        function drawAurora() {
-            time += 0.005;
-            const grad1 = ctx.createRadialGradient(width * 0.3, height * 0.2, 50, width * 0.5, height * 0.4, width * 0.8);
-            grad1.addColorStop(0, `rgba(16, 185, 129, ${0.15 + Math.sin(time) * 0.05})`); // Emerald Aurora
-            grad1.addColorStop(0.5, `rgba(6, 182, 212, ${0.1 + Math.cos(time * 0.8) * 0.04})`); // Cyan Wave
-            grad1.addColorStop(1, 'rgba(2, 6, 23, 0)');
 
-            const grad2 = ctx.createRadialGradient(width * 0.7, height * 0.15, 30, width * 0.6, height * 0.5, width * 0.7);
-            grad2.addColorStop(0, `rgba(245, 158, 11, ${0.12 + Math.cos(time * 1.2) * 0.04})`); // Gold Amber Glow
-            grad2.addColorStop(0.6, `rgba(168, 85, 247, ${0.08 + Math.sin(time * 0.5) * 0.03})`); // Nordic Violet
-            grad2.addColorStop(1, 'rgba(2, 6, 23, 0)');
+        // 1. Živá, intenzívna Polárna žiara (Aurora Borealis Waves)
+        function drawIntenseAurora() {
+            time += 0.007;
 
-            ctx.fillStyle = grad1;
+            // Hlboký nočný základ
+            const bgGrad = ctx.createLinearGradient(0, 0, 0, height);
+            bgGrad.addColorStop(0, '#010409');
+            bgGrad.addColorStop(0.5, '#040d1a');
+            bgGrad.addColorStop(1, '#010409');
+            ctx.fillStyle = bgGrad;
             ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = grad2;
-            ctx.fillRect(0, 0, width, height);
+
+            // Vlny polárnej žiary (Smaragdovo-zelené a tyrkysové svetlo)
+            ctx.save();
+            ctx.globalCompositeOperation = 'screen';
+
+            for (let i = 0; i < 3; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, height * 0.2);
+                
+                for (let x = 0; x < width; x += 40) {
+                    const wave1 = Math.sin(x * 0.003 + time + i) * 120;
+                    const wave2 = Math.cos(x * 0.005 - time * 0.8) * 80;
+                    const y = (height * 0.25) + wave1 + wave2 + (i * 60);
+                    ctx.lineTo(x, y);
+                }
+                
+                ctx.lineTo(width, 0);
+                ctx.lineTo(0, 0);
+                ctx.closePath();
+
+                const auroraGrad = ctx.createLinearGradient(0, 0, 0, height * 0.6);
+                if (i === 0) {
+                    auroraGrad.addColorStop(0, 'rgba(16, 185, 129, 0.35)'); // Emerald Green
+                    auroraGrad.addColorStop(1, 'rgba(6, 182, 212, 0)');
+                } else if (i === 1) {
+                    auroraGrad.addColorStop(0, 'rgba(52, 211, 153, 0.25)'); // Bright Cyan/Green
+                    auroraGrad.addColorStop(1, 'rgba(147, 51, 234, 0)'); // Subtle violet mix
+                } else {
+                    auroraGrad.addColorStop(0, 'rgba(245, 158, 11, 0.2)'); // Amber Golden Northern Glow
+                    auroraGrad.addColorStop(1, 'rgba(16, 185, 129, 0)');
+                }
+
+                ctx.fillStyle = auroraGrad;
+                ctx.fill();
+            }
+            ctx.restore();
         }
 
-        // 2. Mýtické Pohybujúce sa Bytosti (Óðinnove Krkavce Huginn & Muninn + Drak Fáfnir)
-        class MythicEntity {
-            constructor(type) {
-                this.type = type; // 'raven' or 'dragon'
+        // 2. Mýtické siluety (Krkavce)
+        class Raven {
+            constructor() {
                 this.reset();
             }
-
             reset() {
-                this.x = Math.random() < 0.5 ? -100 : width + 100;
-                this.y = Math.random() * (height * 0.5) + 50;
-                this.speedX = (this.x < 0 ? 1 : -1) * (this.type === 'dragon' ? (Math.random() * 0.8 + 0.4) : (Math.random() * 1.5 + 1.0));
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.size = this.type === 'dragon' ? (Math.random() * 30 + 50) : (Math.random() * 12 + 15);
-                this.wingAngle = 0;
-                this.opacity = Math.random() * 0.35 + 0.25;
+                this.x = -100;
+                this.y = Math.random() * (height * 0.4) + 40;
+                this.speedX = Math.random() * 1.2 + 0.8;
+                this.wingAngle = Math.random() * Math.PI;
+                this.size = Math.random() * 10 + 12;
             }
-
             update() {
                 this.x += this.speedX;
-                this.y += Math.sin(time * 2 + this.x * 0.01) * 0.5 + this.speedY;
-                this.wingAngle += 0.08;
-
-                if ((this.speedX > 0 && this.x > width + 150) || (this.speedX < 0 && this.x < -150)) {
-                    this.reset();
-                }
+                this.y += Math.sin(time * 3 + this.x * 0.01) * 0.4;
+                this.wingAngle += 0.1;
+                if (this.x > width + 100) this.reset();
             }
-
             draw() {
                 ctx.save();
                 ctx.translate(this.x, this.y);
-                ctx.scale(this.speedX > 0 ? 1 : -1, 1);
-                ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`;
+                ctx.fillStyle = 'rgba(245, 158, 11, 0.45)';
                 ctx.shadowColor = 'rgba(245, 158, 11, 0.8)';
-                ctx.shadowBlur = 15;
-
-                if (this.type === 'raven') {
-                    // Krkavec - Vektorová silueta
-                    const wing = Math.sin(this.wingAngle) * 10;
-                    ctx.beginPath();
-                    ctx.moveTo(0, 0);
-                    ctx.quadraticCurveTo(10, -10 + wing, 20, -2);
-                    ctx.quadraticCurveTo(10, 5, 0, 0);
-                    ctx.quadraticCurveTo(-10, -10 + wing, -20, -2);
-                    ctx.quadraticCurveTo(-10, 5, 0, 0);
-                    ctx.fill();
-                } else if (this.type === 'dragon') {
-                    // Drak Fáfnir - Vektorová mýtická silueta
-                    const wing = Math.sin(this.wingAngle * 0.6) * 18;
-                    ctx.beginPath();
-                    ctx.moveTo(0, 0);
-                    ctx.lineTo(15, -8 + wing);
-                    ctx.lineTo(35, -5 + wing * 0.5);
-                    ctx.lineTo(10, 5);
-                    ctx.lineTo(-20, 15);
-                    ctx.lineTo(-10, -8 + wing);
-                    ctx.closePath();
-                    ctx.fill();
-                }
+                ctx.shadowBlur = 10;
+                const wing = Math.sin(this.wingAngle) * 8;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(8, -8 + wing, 16, -2);
+                ctx.quadraticCurveTo(8, 4, 0, 0);
+                ctx.quadraticCurveTo(-8, -8 + wing, -16, -2);
+                ctx.quadraticCurveTo(-8, 4, 0, 0);
+                ctx.fill();
                 ctx.restore();
             }
         }
 
-        // 3. 3D Vznášajúce sa Runy s Hĺbkou (Parallax Z-Index)
+        // 3. 3D Z-Index Vznášajúce sa Runy
         const runesList = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᚷ','ᚹ','ᚺ','ᚾ','ᛁ','ᛃ','ᛇ','ᛈ','ᛉ','ᛋ','ᛏ','ᛒ','ᛖ','ᛗ','ᛚ','ᛝ','ᛟ','ᛞ'];
-        class Floating3DRune {
+        class RuneParticle {
             constructor() {
                 this.reset();
             }
-
             reset() {
                 this.x = Math.random() * width;
-                this.y = Math.random() * height + height;
-                this.z = Math.random() * 3 + 0.5; // Z-index pre 3D pocit
-                this.size = (Math.random() * 16 + 14) * this.z;
+                this.y = height + 50;
+                this.z = Math.random() * 2.5 + 0.8; // Hĺbka 3D
+                this.size = (Math.random() * 18 + 14) * this.z;
                 this.rune = runesList[Math.floor(Math.random() * runesList.length)];
-                this.speedY = -(Math.random() * 0.6 + 0.2) * this.z;
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.opacity = (Math.random() * 0.4 + 0.15) / (4 - this.z);
+                this.speedY = -(Math.random() * 0.7 + 0.3) * this.z;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = (Math.random() * 0.5 + 0.2) / (3.5 - this.z);
                 this.rotate = Math.random() * Math.PI * 2;
-                this.rotateSpeed = (Math.random() - 0.5) * 0.01;
+                this.rotateSpeed = (Math.random() - 0.5) * 0.008;
             }
-
             update() {
                 this.y += this.speedY;
                 this.x += this.speedX;
                 this.rotate += this.rotateSpeed;
-
                 if (this.y < -50) this.reset();
             }
-
             draw() {
                 ctx.save();
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.rotate);
                 ctx.font = `${this.size}px Cinzel, serif`;
                 ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`;
-                ctx.shadowColor = 'rgba(217, 119, 6, 0.9)';
-                ctx.shadowBlur = 12 * this.z;
+                ctx.shadowColor = 'rgba(217, 119, 6, 0.95)';
+                ctx.shadowBlur = 15 * this.z;
                 ctx.fillText(this.rune, 0, 0);
                 ctx.restore();
             }
         }
 
-        // 4. Zlaté Iskry z Kováčne (Ember Particles)
-        class EmberSpark {
+        // 4. Zlaté ohnivé iskry z kováčne
+        class Ember {
             constructor() {
                 this.reset();
             }
-
             reset() {
                 this.x = Math.random() * width;
                 this.y = height + 10;
-                this.size = Math.random() * 2.5 + 0.8;
-                this.speedY = -(Math.random() * 1.8 + 0.6);
-                this.speedX = (Math.random() - 0.5) * 1.2;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = -(Math.random() * 2 + 0.8);
+                this.speedX = (Math.random() - 0.5) * 1.5;
                 this.life = 1.0;
-                this.decay = Math.random() * 0.008 + 0.003;
+                this.decay = Math.random() * 0.007 + 0.002;
             }
-
             update() {
                 this.y += this.speedY;
-                this.x += this.speedX + Math.sin(time * 3 + this.y * 0.05) * 0.5;
+                this.x += this.speedX + Math.sin(time * 4 + this.y * 0.04) * 0.6;
                 this.life -= this.decay;
-
                 if (this.life <= 0 || this.y < -10) this.reset();
             }
-
             draw() {
                 ctx.save();
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(251, 191, 36, ${this.life * 0.8})`;
+                ctx.fillStyle = `rgba(251, 191, 36, ${this.life * 0.9})`;
                 ctx.shadowColor = 'rgba(245, 158, 11, 1)';
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = 10;
                 ctx.fill();
                 ctx.restore();
             }
         }
 
-        // Inicializácia Objektov
-        const entities = [
-            new MythicEntity('raven'),
-            new MythicEntity('raven'),
-            new MythicEntity('dragon')
-        ];
-        const 3dRunes = Array.from({ length: 40 }, () => new Floating3DRune());
-        const embers = Array.from({ length: 60 }, () => new EmberSpark());
+        // Inicializácia objektov
+        const ravens = Array.from({ length: 2 }, () => new Raven());
+        const runes = Array.from({ length: 45 }, () => new RuneParticle());
+        const embers = Array.from({ length: 65 }, () => new Ember());
 
-        // Hlavná Animačná Slučka
-        function renderScene() {
+        // Animačná slučka
+        function animate() {
             ctx.clearRect(0, 0, width, height);
 
-            // 1. Aurora background
-            drawAurora();
+            drawIntenseAurora();
+            ravens.forEach(r => { r.update(); r.draw(); });
+            runes.forEach(rune => { rune.update(); rune.draw(); });
+            embers.forEach(ember => { ember.update(); ember.draw(); });
 
-            // 2. 3D Runes
-            3dRunes.forEach(r => { r.update(); r.draw(); });
-
-            // 3. Mythic Beasts (Ravens & Dragon)
-            entities.forEach(e => { e.update(); e.draw(); });
-
-            // 4. Ember Sparks
-            embers.forEach(spark => { spark.update(); spark.draw(); });
-
-            requestAnimationFrame(renderScene);
+            requestAnimationFrame(animate);
         }
 
-        renderScene();
+        animate();
     </script>
 </body>
 </html>
