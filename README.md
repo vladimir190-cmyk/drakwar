@@ -24,7 +24,7 @@ An immersive interactive web presentation bringing together Nordic-inspired aest
 
 > *Place a GIF or hero screenshot of the DRAKWAR live app here.*
 >
-> `![DRAKWAR Hero Preview](assets/preview.gif)`
+> `![DRAKWAR Preview](preview.png)`
 
 ---
 
